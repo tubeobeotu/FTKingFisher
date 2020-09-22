@@ -31,7 +31,7 @@ import Foundation
 /// The parameter value is the `receivedSize` of current response.
 /// The second parameter is the total expected data length from response's "Content-Length" header.
 /// If the expected length is not available, this block will not be called.
-public typealias DownloadProgressBlock = ((_ receivedSize: Int64, _ totalSize: Int64) -> Void)
+public typealias DownloadProgressBlock = ((_ receivedData: Data, _ receivedSize: Int64, _ totalSize: Int64) -> Void)
 
 /// Represents the result of a Kingfisher retrieving image task.
 public struct RetrieveImageResult {
@@ -206,7 +206,7 @@ public class KingfisherManager {
         downloadTaskUpdated: DownloadTaskUpdatedBlock? = nil,
         completionHandler: ((Result<RetrieveImageResult, KingfisherError>) -> Void)?) -> DownloadTask?
     {
-        let retrievingContext = RetrievingContext(options: options, originalSource: source)
+        var retrievingContext = RetrievingContext(options: options, originalSource: source)
         var retryContext: RetryContext?
 
         func startNewRetrieveTask(
