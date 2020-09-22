@@ -136,6 +136,20 @@ class SessionDelegate: NSObject {
         lock.unlock()
         task?.forceCancel()
     }
+    
+    func setLowPriority(url: URL) {
+      lock.lock()
+      let task = tasks[url]
+      lock.unlock()
+      task?.task.priority = URLSessionTask.lowPriority
+    }
+    
+    func setHightPriority(url: URL) {
+      lock.lock()
+      let task = tasks[url]
+      lock.unlock()
+      task?.task.priority = URLSessionTask.highPriority
+    }
 }
 
 extension SessionDelegate: URLSessionDataDelegate {

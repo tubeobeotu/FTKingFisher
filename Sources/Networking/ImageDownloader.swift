@@ -320,7 +320,14 @@ open class ImageDownloader {
         }
         return downloadTask
     }
-
+    
+    open func setLowPriority(url: URL) {
+      sessionDelegate.setLowPriority(url: url)
+    }
+  
+    open func setHightPriority(url: URL) {
+      sessionDelegate.setHightPriority(url: url)
+    }
     /// Downloads an image with a URL and option.
     ///
     /// - Parameters:
