@@ -143,8 +143,8 @@ class SessionDelegate: NSObject {
       lock.unlock()
       task?.task.priority = URLSessionTask.lowPriority
     }
-    
-    func setHightPriority(url: URL) {
+  
+    func setHighPriority(url: URL) {
       lock.lock()
       let task = tasks[url]
       lock.unlock()
