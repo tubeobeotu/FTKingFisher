@@ -130,6 +130,13 @@ class SessionDelegate: NSObject {
         }
     }
 
+    func suspend(url: URL) {
+        lock.lock()
+        let task = tasks[url]
+        lock.unlock()
+        task?.suspend()
+    }
+    
     func cancel(url: URL) {
         lock.lock()
         let task = tasks[url]

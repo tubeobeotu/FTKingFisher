@@ -276,6 +276,7 @@ public class ImagePrefetcher: CustomStringConvertible {
         }
 
         if let downloadTask = downloadTask {
+            downloadTask.value?.sessionTask.task.priority = URLSessionTask.lowPriority
             tasks[source.cacheKey] = downloadTask
         }
     }

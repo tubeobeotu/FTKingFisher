@@ -96,6 +96,12 @@ public class SessionDataTask {
         started = true
         task.resume()
     }
+  
+    func suspend() {
+      guard started else { return }
+      started = false
+      task.suspend()
+    }
 
     func cancel(token: CancelToken) {
         guard let callback = removeCallback(token) else {

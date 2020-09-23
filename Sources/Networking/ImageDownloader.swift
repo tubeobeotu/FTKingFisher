@@ -321,6 +321,10 @@ open class ImageDownloader {
         return downloadTask
     }
     
+    open func suspend(url: URL) {
+      sessionDelegate.suspend(url: url)
+    }
+  
     open func setLowPriority(url: URL) {
       sessionDelegate.setLowPriority(url: url)
     }
